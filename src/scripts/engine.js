@@ -29,6 +29,8 @@ const playerSides = {
     computer: "computer-cards",
 }
 
+const globalVolume = 0.55;
+
 const pathImages = "./src/assets/icons/";
 
 const cardData = [
@@ -145,6 +147,7 @@ async function createCardImage(IdCard, fieldSide){
         cardImage.addEventListener("mouseover", ()=>{
             drawSelectCard(IdCard);
             const bgm = document.getElementById("bgm");
+            bgm.volume = 1;
             bgm.play();
             });
     }
@@ -239,6 +242,7 @@ async function resetDuel(){
 
 async function playAudio(status){
     const audio = new Audio(`./src/assets/audios/${status}.mp3`)
+    audio.volume = globalVolume;
     audio.play();
 }
 

@@ -150,3 +150,12 @@ transition: transform 0.2s;
 .card:hover{
     transform: scale(1.2);
 }
+
+#player-cards{
+    border: solid 5px #c55e09;
+    transition: border-width 0.2s linear;
+  }
+
+  #player-cards:hover { 
+    border-width: 10px; 
+}
