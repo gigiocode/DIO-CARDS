@@ -37,7 +37,7 @@ const cardData = [
         name: "Juggernaut",
         type: "Agility",
         points: "34",
-        medal: "gold",
+        medal: "Gold",
         img: `${pathImages}card-front-agility-1.png`,
         WinOf:[1, 2, 3, 4, 5],
         LoseOf:[6, 7, 8],
@@ -47,7 +47,7 @@ const cardData = [
         name: "Riki",
         type: "Agility",
         points: "30",
-        medal: "silver",
+        medal: "Silver",
         img: `${pathImages}card-front-agility-2.png`,
         WinOf:[2, 3, 4, 5],
         LoseOf:[6, 7, 8, 0],
@@ -57,7 +57,7 @@ const cardData = [
         name: "Sniper",
         type: "Agility",
         points: "27",
-        medal: "bronze",
+        medal: "Bronze",
         img: `${pathImages}card-front-agility-3.png`,
         WinOf:[3, 4, 5],
         LoseOf:[6, 7, 8, 0, 1],
@@ -67,7 +67,7 @@ const cardData = [
         name: "Lina",
         type: "Intelligence",
         points: "30",
-        medal: "gold",
+        medal: "Gold",
         img: `${pathImages}card-front-intelligence-1.png`,
         WinOf:[4, 5, 6, 7, 8],
         LoseOf:[0, 1, 2],
@@ -77,7 +77,7 @@ const cardData = [
         name: "Zeus",
         type: "Intelligence",
         points: "22",
-        medal: "silver",
+        medal: "Silver",
         img: `${pathImages}card-front-intelligence-2.png`,
         WinOf:[5, 6, 7, 8],
         LoseOf:[0, 1, 2, 3],
@@ -87,7 +87,7 @@ const cardData = [
         name: "Crystal Maiden",
         type: "Intelligence",
         points: "18",
-        medal: "bronze",
+        medal: "Bronze",
         img: `${pathImages}card-front-intelligence-3.png`,
         WinOf:[6, 7, 8],
         LoseOf:[0, 1, 2, 3, 4],
@@ -97,7 +97,7 @@ const cardData = [
         name: "Tiny",
         type: "Strength",
         points: "30",
-        medal: "gold",
+        medal: "Gold",
         img: `${pathImages}card-front-strength-1.png`,
         WinOf:[0, 1, 2, 7, 8],
         LoseOf:[3, 4, 5],
@@ -107,7 +107,7 @@ const cardData = [
         name: "Dawnbreaker",
         type: "Strength",
         points: "25",
-        medal: "gold",
+        medal: "Silver",
         img: `${pathImages}card-front-strength-2.png`,
         WinOf:[0, 1, 2, 8],
         LoseOf:[3, 4, 5, 6],
@@ -117,7 +117,7 @@ const cardData = [
         name: "Dragon Knight",
         type: "Strength",
         points: "21",
-        medal: "gold",
+        medal: "Bronze",
         img: `${pathImages}card-front-strength-3.png`,
         WinOf:[0, 1, 2],
         LoseOf:[3, 4, 5, 6, 7],
@@ -160,6 +160,9 @@ async function setCardsField(cardId){
 
     state.fieldCards.player.src = cardData[cardId].img;
     state.fieldCards.computer.src = cardData[computerCardId].img;
+
+    state.cardSprites.name.innerText = "";
+    state.cardSprites.type.innerText = "";
 
     let duelResults = await checkDuelResults(cardId, computerCardId);
 
@@ -206,8 +209,9 @@ async function removeAllCardsImages(){
 
 async function drawSelectCard(index){
     state.cardSprites.avatar.src = cardData[index].img;
+    state.cardSprites.avatar.style.display = "block";
     state.cardSprites.name.innerText = cardData[index].name;
-    state.cardSprites.type.innerText = "Attribute: " + cardData[index].type;
+    state.cardSprites.type.innerText = "Medal: " + cardData[index].medal;
 }
 
 
@@ -236,8 +240,13 @@ async function playAudio(status){
 }
 
 function init (){
+    state.cardSprites.avatar.style.display = "none";
+
     drawCards(5, playerSides.player1);
     drawCards(5, playerSides.computer);
+
+    const bgm = document.getElementById("bgm");
+    bgm.play();
 }
 
 init();
