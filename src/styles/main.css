@@ -71,7 +71,7 @@ a:hover{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 6rem;
+    height: 7rem;
     width: 100%;
 }
 
@@ -149,13 +149,4 @@ transition: transform 0.2s;
 
 .card:hover{
     transform: scale(1.2);
-}
-
-#player-cards{
-    border: solid 5px #c55e09;
-    transition: border-width 0.2s linear;
-  }
-
-  #player-cards:hover { 
-    border-width: 10px; 
 }
