@@ -29,7 +29,7 @@ const playerSides = {
     computer: "computer-cards",
 }
 
-const globalVolume = 0.55;
+const globalVolume = 0.45;
 
 const pathImages = "./src/assets/icons/";
 
@@ -142,7 +142,7 @@ async function createCardImage(IdCard, fieldSide){
     if(fieldSide === playerSides.player1){
         cardImage.addEventListener("click", ()=>{
             const bgm = document.getElementById("bgm");
-            bgm.volume = 1;
+            bgm.volume = 0.75;
             bgm.play();
             setCardsField(cardImage.getAttribute("data-id"));
         });
