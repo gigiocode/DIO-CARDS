@@ -14,11 +14,16 @@ const state ={
         computer: document.getElementById("computer-field-card"),
     },
     actions:{
-        button: documento.getElementById("next-duel"),
+        button: document.getElementById("next-duel"),
     },
 };
 
-const pathImages = ".scr/assets/icons/";
+const playerSides = {
+    player1: "player-cards",
+    computer: "computer-cards",
+}
+
+const pathImages = "./scr/assets/icons/";
 
 const cardData = [
     {
@@ -49,7 +54,7 @@ const cardData = [
         medal: "bronze",
         img: `${pathImages}card-front-agility-3.png`,
         WinOf:[3, 4, 5],
-        LoseOf:[6, 7, 8, 0, 1, 2],
+        LoseOf:[6, 7, 8, 0, 1],
     },
     {
         id:3,
@@ -114,8 +119,44 @@ const cardData = [
     
 ];
 
+async function getRandomCardId(){
+    const randomIndex = Math.floor(Math.random() * cardData.length);
+    return cardData[randomIndex].id
+}
+
+async function createCardImage(IdCard, fieldSide){
+    const cardImage = document.createElement("img");
+    cardImage.setAttribute("height", "100px");
+    cardImage.setAttribute("src", "./scr/assets/icons/card-back-dota.png");
+    cardImage.setAttribute("data-id", IdCard);
+    cardImage.classList.add("card");
+
+    if(fieldSide === playerSides.player1){
+        cardImage.addEventListener("click", ()=>{
+            setCardsField(cardImage.getAttribute("data-id"));
+        });
+    }
+
+    cardImage.addEventListener("mouseover", ()=>{
+        drawSelectCard(IdCard);
+    });
+
+    return cardImage;
+
+}
+
+async function drawCards(cardNumbers, fieldSide){
+    for(let i = 0; i<cardNumbers; i++){
+        const randomIdCard = await getRandomCardId();
+        const cardImage = await createCardImage(randomIdCard, fieldSide);
+
+        document.getElementById(fieldSide).appendChild(cardImage);
+    }
+}
+
 function init (){
-    
+    drawCards(5, playerSides.player1);
+    drawCards(5, playerSides.computer);
 }
 
 init();
