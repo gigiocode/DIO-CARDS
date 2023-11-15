@@ -144,7 +144,9 @@ async function createCardImage(IdCard, fieldSide){
 
         cardImage.addEventListener("mouseover", ()=>{
             drawSelectCard(IdCard);
-        });
+            const bgm = document.getElementById("bgm");
+            bgm.play();
+            });
     }
 
     return cardImage;
@@ -173,10 +175,11 @@ async function setCardsField(cardId){
 async function drawButton(text){
     state.actions.button.innerText = text;
     state.actions.button.style.display = "block";
+        
 }
 
 async function updateScore(){
-    state.score.scoreBox.innerText = `Win: ${state.score.playerScore} | Lose: ${state.score.computerScore}`
+    state.score.scoreBox.innerText = `Win: ${state.score.playerScore} | Lose: ${state.score.computerScore}`;
 }
 
 async function checkDuelResults(playerCardId, ComputerCardId){
@@ -245,8 +248,7 @@ function init (){
     drawCards(5, playerSides.player1);
     drawCards(5, playerSides.computer);
 
-    const bgm = document.getElementById("bgm");
-    bgm.play();
+
 }
 
 init();
