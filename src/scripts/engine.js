@@ -141,14 +141,14 @@ async function createCardImage(IdCard, fieldSide){
 
     if(fieldSide === playerSides.player1){
         cardImage.addEventListener("click", ()=>{
+            const bgm = document.getElementById("bgm");
+            bgm.volume = 1;
+            bgm.play();
             setCardsField(cardImage.getAttribute("data-id"));
         });
 
         cardImage.addEventListener("mouseover", ()=>{
-            drawSelectCard(IdCard);
-            const bgm = document.getElementById("bgm");
-            bgm.volume = 1;
-            bgm.play();
+            drawSelectCard(IdCard);            
             });
     }
 
