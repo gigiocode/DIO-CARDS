@@ -150,3 +150,14 @@ transition: transform 0.2s;
 .card:hover{
     transform: scale(1.2);
 }
+
+#footer {
+    color: #000000;
+    text-align: center;
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+    padding: 10px;
+    font-size: 1.6rem;
+    text-decoration: none;
+}
